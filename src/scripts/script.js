@@ -1,4 +1,4 @@
-import { mockData } from './mock/transactions.js';
+import { mockData } from '../data/transactions.js';
 
 // ---
 // ESTADO GLOBAL
