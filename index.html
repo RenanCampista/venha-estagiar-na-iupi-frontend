@@ -4,13 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Desafio Frontend - Controle de Despesas</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="src/styles/style.css">
 </head>
 <body data-theme="light"> 
     <header class="header">
         <h1>Meu Controle Financeiro</h1>
         <button id="theme-switcher">Mudar Tema</button>
     </header>
+
+    <main class="container">
+        <section class="form-section">
+            <h2>Nova Transação</h2>
+            <form id="transaction-form">
+                <div class="form-group">
+                    <label for="description">Descrição</label>
+                    <input type="text" id="description" name="description">
+                    <span class="error-message" id="description-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="amount">Valor</label>
+                    <input type="number" id="amount" name="amount">
+                    <span class="error-message" id="amount-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="type">Tipo</label>
+                    <select id="type" name="type">
+                        <option value="">Selecione</option>
+                        <option value="income">Entrada</option>
+                        <option value="expense">Saída</option>
+                    </select>
+                    <span class="error-message" id="type-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="date">Data</label>
+                    <input type="date" id="date" name="date">
+                    <span class="error-message" id="date-error"></span>
+                </div>
+
+                <button type="submit" class="submit-btn">Adicionar</button>
+            </form>
+        </section>
+    
+    </main>
+
 
     <script src="script.js" type="module"></script>
 </body>
