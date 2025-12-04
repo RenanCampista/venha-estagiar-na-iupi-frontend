@@ -211,16 +211,25 @@ function addTransaction(transactionData) {
     
     transactions.push(newTransaction);
     saveToLocalStorage();
-    renderTransactions();
+    renderTransactions(); // Renderiza novamente após adicionar
 }
 
+/**
+ * Remove uma transação pelo ID.
+ * @param {number} id - O ID da transação a ser removida.
+ */
+function deleteTransaction(id) {
+    transactions = transactions.filter(transaction => transaction.id !== id); // Remove através do filtro
+    saveToLocalStorage();
+    renderTransactions();
+}
 
 
 /**
  * Salva as transações e o tema no localStorage.
  */
 function saveToLocalStorage() {
-    localStorage.setItem('transactions', JSON.stringify(transactions));
+    localStorage.setItem('transactions', JSON.stringify(transactions)); // stringify para salvar como string (ls só aceita strings)
     localStorage.setItem('nextId', nextId.toString());
 }
 
@@ -230,7 +239,7 @@ function saveToLocalStorage() {
 function loadFromLocalStorage() {
     const savedTransactions = localStorage.getItem('transactions');
     const savedNextId = localStorage.getItem('nextId');
-    const savedTheme = localStorage.getItem('theme');
+    const savedTheme = localStorage.getItem('theme'); // TODO
     
     if (savedTransactions) {
         transactions = JSON.parse(savedTransactions);
@@ -274,6 +283,17 @@ TRANSACTION_FORM.addEventListener('submit', (event) => {
     }
 });
 
+/**
+ * Lida com cliques nos botões de excluir.
+ */
+TRANSACTION_LIST.addEventListener('click', (event) => {
+    if (event.target.classList.contains('delete-btn')) {
+        const id = parseInt(event.target.getAttribute('data-id'));
+        deleteTransaction(id);
+    }
+});
+
+
 
 /**
  * Lida com o clique no botão de trocar o tema (Light/Dark).
@@ -288,7 +308,6 @@ function init() {
     loadFromLocalStorage();
     renderTransactions();
 }
-
 
 // Inicia a aplicação
 init();
