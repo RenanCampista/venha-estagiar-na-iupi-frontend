@@ -47,9 +47,31 @@
                 <button type="submit" class="submit-btn">Adicionar</button>
             </form>
         </section>
-    
-    </main>
 
+        <section class="list-section">
+            <h2>Transações</h2>
+            <div class="controls">
+                <div class="control-group">
+                    <label for="search">Filtrar por descrição</label>
+                    <input type="search" id="search" placeholder="Buscar...">
+                </div>
+
+                <div class="control-group">
+                    <label for="sort">Ordenar por</label>
+                    <select id="sort">
+                        <option value="date-desc">Data (Mais Recentes)</option>
+                        <option value="date-asc">Data (Mais Antigas)</option>
+                        <option value="amount-desc">Valor (Maior)</option>
+                        <option value="amount-asc">Valor (Menor)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="balance" class="balance"></div>
+            
+            <ul id="transaction-list" class="transaction-list"></ul>
+        </section>
+    </main>
 
     <script src="script.js" type="module"></script>
 </body>
