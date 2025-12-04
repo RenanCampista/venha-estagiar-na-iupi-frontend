@@ -11,6 +11,15 @@ let currentTheme = 'light';
 // ---
 const THEME_SWITCHER = document.getElementById('theme-switcher');
 
+const DESCRIPTION_INPUT = document.getElementById('description');
+const AMOUNT_INPUT = document.getElementById('amount');
+const TYPE_SELECT = document.getElementById('type');
+const DATE_INPUT = document.getElementById('date');
+
+const DESCRIPTION_ERROR = document.getElementById('description-error');
+const AMOUNT_ERROR = document.getElementById('amount-error');
+const TYPE_ERROR = document.getElementById('type-error');
+const DATE_ERROR = document.getElementById('date-error');
 // ---
 // FUNÇÕES AUXILIARES 
 // ---
@@ -20,7 +29,10 @@ const THEME_SWITCHER = document.getElementById('theme-switcher');
  * @param {string} dateString - A data no formato ISO.
  * @returns {string} A data formatada.
  */
-// function formatDate(dateString) { ... }
+function formatDate(dateString) {
+    const date = new Date(dateString + 'T00:00:00');
+    return date.toLocaleDateString('pt-BR');
+}
 
 
 // ---
