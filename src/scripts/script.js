@@ -288,6 +288,9 @@ TRANSACTION_FORM.addEventListener('submit', (event) => {
  */
 TRANSACTION_LIST.addEventListener('click', (event) => {
     if (event.target.classList.contains('delete-btn')) {
+        var conf = confirm("Tem certeza que deseja excluir esta transação?");
+        if (!conf) return;
+        
         const id = parseInt(event.target.getAttribute('data-id'));
         deleteTransaction(id);
     }
