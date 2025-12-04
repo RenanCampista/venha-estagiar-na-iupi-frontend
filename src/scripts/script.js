@@ -11,6 +11,7 @@ let currentTheme = 'light';
 // SELETORES DO DOM (Constantes - Padrão UPPER_SNAKE_CASE)
 // ---
 const THEME_SWITCHER = document.getElementById('theme-switcher');
+const TRANSACTION_FORM = document.getElementById('transaction-form');
 const TRANSACTION_LIST = document.getElementById('transaction-list');
 const SEARCH_INPUT = document.getElementById('search');
 const SORT_SELECT = document.getElementById('sort');
@@ -150,6 +151,72 @@ function renderTransactions() {
 }
 
 /**
+ * Limpa todas as mensagens de erro do formulário.
+ */
+function clearErrors() {
+    DESCRIPTION_ERROR.textContent = '';
+    AMOUNT_ERROR.textContent = '';
+    TYPE_ERROR.textContent = '';
+    DATE_ERROR.textContent = '';
+}
+
+/**
+ * Valida o formulário de transação.
+ * @returns {boolean} True se o formulário é válido, false caso contrário.
+ */
+function validateForm() {
+    clearErrors();
+    let isValid = true;
+    
+    // Validação da descrição
+    if (!DESCRIPTION_INPUT.value.trim()) {
+        DESCRIPTION_ERROR.textContent = 'A descrição é obrigatória';
+        isValid = false;
+    }
+    
+    // Validação do valor
+    const amount = parseFloat(AMOUNT_INPUT.value);
+    if (!AMOUNT_INPUT.value || isNaN(amount) || amount <= 0) {
+        AMOUNT_ERROR.textContent = 'O valor deve ser maior que zero';
+        isValid = false;
+    }
+    
+    // Validação do tipo
+    if (!TYPE_SELECT.value) {
+        TYPE_ERROR.textContent = 'Selecione o tipo de transação';
+        isValid = false;
+    }
+    
+    // Validação da data
+    if (!DATE_INPUT.value) {
+        DATE_ERROR.textContent = 'A data é obrigatória';
+        isValid = false;
+    }
+    
+    return isValid;
+}
+
+/**
+ * Adiciona uma nova transação.
+ * @param {Object} transactionData - Os dados da transação.
+ */
+function addTransaction(transactionData) {
+    const newTransaction = {
+        id: nextId++,
+        description: transactionData.description,
+        amount: parseFloat(transactionData.amount),
+        date: transactionData.date,
+        type: transactionData.type
+    };
+    
+    transactions.push(newTransaction);
+    saveToLocalStorage();
+    renderTransactions();
+}
+
+
+
+/**
  * Salva as transações e o tema no localStorage.
  */
 function saveToLocalStorage() {
@@ -186,6 +253,27 @@ function loadFromLocalStorage() {
 // ---
 // MANIPULADORES DE EVENTOS
 // ---
+
+/**
+ * Lida com o envio do formulário de transação.
+ */
+TRANSACTION_FORM.addEventListener('submit', (event) => {
+    event.preventDefault();
+    
+    if (validateForm()) {
+        const formData = {
+            description: DESCRIPTION_INPUT.value.trim(),
+            amount: AMOUNT_INPUT.value,
+            type: TYPE_SELECT.value,
+            date: DATE_INPUT.value
+        };
+        
+        addTransaction(formData);
+        TRANSACTION_FORM.reset();
+        clearErrors();
+    }
+});
+
 
 /**
  * Lida com o clique no botão de trocar o tema (Light/Dark).
