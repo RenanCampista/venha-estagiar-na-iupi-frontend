@@ -135,6 +135,14 @@ h2 {
     color: var(--text-color);
 }
 
+.error-message {
+    color: var(--expense-color);
+    font-size: 0.875rem;
+    display: block;
+    min-height: 1rem;
+    margin-top: 0.25rem;
+}
+
 /* Controles (filtro e ordenação) */
 .controls {
     display: flex;
