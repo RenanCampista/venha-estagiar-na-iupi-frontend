@@ -218,3 +218,15 @@ h2 {
     color: var(--expense-color);
 }
 
+
+/* Elimina as setas nos inputs de número no Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+/* Elimina as setas nos inputs de número no Chrome, Safari, Edge e Opera */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
