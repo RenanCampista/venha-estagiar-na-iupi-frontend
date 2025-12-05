@@ -302,8 +302,7 @@ TRANSACTION_FORM.addEventListener('submit', (event) => {
  */
 TRANSACTION_LIST.addEventListener('click', (event) => {
     if (event.target.classList.contains('delete-btn')) {
-        var conf = confirm("Tem certeza que deseja excluir esta transação?");
-        if (!conf) return;
+        if (!confirm("Tem certeza que deseja excluir esta transação?")) return;
 
         const id = parseInt(event.target.getAttribute('data-id'));
         deleteTransaction(id);
@@ -319,12 +318,6 @@ SEARCH_INPUT.addEventListener('input', renderTransactions);
  * Lida com a mudança no select de ordenação.
  */
 SORT_SELECT.addEventListener('change', renderTransactions);
-
-/**
- * Lida com o clique no botão de trocar o tema (Light/Dark).
- */
-THEME_SWITCHER.addEventListener('click', () => {
-});
 
 /**
  * Função de inicialização da aplicação. A "main"
