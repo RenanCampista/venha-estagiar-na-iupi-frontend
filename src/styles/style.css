@@ -1,5 +1,5 @@
 :root {
-     /* Variáveis de cores para tema claro */
+    /* Variáveis de cores para tema claro */
     --bg-color: #f5f5f5;
     --text-color: #333;
     --header-bg: #2c3e50;
@@ -14,7 +14,7 @@
     --input-border: #ccc;
 }
 
-
+/* Reset e estilos globais */
 * {
     margin: 0;
     padding: 0;
@@ -27,6 +27,11 @@ body {
     color: var(--text-color);
 }
 
+h2 {
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+
 .header {
     background-color: var(--header-bg);
     color: var(--header-text);
@@ -36,28 +41,25 @@ body {
     align-items: center;
 }
 
+.header h1 {
+    font-size: 1.5rem;
+}
 
-/* Botões */
-#theme-switcher {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
 }
 
 .theme-btn {
-    background-color: var(--btn-bg);
-    color: white;
+    padding: 6px 14px;
     border: none;
-    padding: 0.5rem 1rem;
     border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.theme-btn:hover {
-    background-color: var(--btn-hover);
+    font-size: 12px;
 }
 
 .submit-btn {
@@ -90,63 +92,7 @@ body {
     opacity: 0.8;
 }
 
-/* Controles (filtro e ordenação) */
-.controls {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 1rem;
-}
-
-.control-group {
-    flex: 1;
-}
-
-.control-group label {
-    display: block;
-    margin-bottom: 0.25rem;
-    font-weight: bold;
-    font-size: 0.875rem;
-}
-
-.control-group input,
-.control-group select {
-    width: 100%;
-    padding: 0.5rem;
-    border: 1px solid var(--input-border);
-    border-radius: 4px;
-    background-color: var(--input-bg);
-    color: var(--text-color);
-}
-
-.balance {
-    padding: 1rem;
-    margin-bottom: 1rem;
-    border-radius: 4px;
-    text-align: center;
-    font-size: 1.15rem;
-    font-weight: bold;
-    background-color: var(--bg-color);
-}
-
-.header h1 {
-    font-size: 1.5rem;
-}
-
-
-h2 {
-    margin-bottom: 1rem;
-    font-size: 1.25rem;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 2rem auto;
-    padding: 0 1rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-}
-
+/* Seções (Form e List) */
 .form-section,
 .list-section {
     background-color: var(--card-bg);
@@ -175,7 +121,44 @@ h2 {
     color: var(--text-color);
 }
 
+/* Controles (filtro e ordenação) */
+.controls {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.control-group {
+    flex: 1;
+}
+
+.control-group label {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-weight: bold;
+    font-size: 0.875rem;
+}
+
+.control-group input,
+.control-group select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--input-border);
+    border-radius: 4px;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+}
+
 /* Lista de transações */
+.balance {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 1.15rem;
+    font-weight: bold;
+    background-color: var(--bg-color);
+}
 .transaction-list {
     list-style: none;
 }
@@ -226,7 +209,6 @@ h2 {
 .transaction-amount.expense {
     color: var(--expense-color);
 }
-
 
 /* Elimina as setas nos inputs de número no Firefox */
 input[type="number"] {
