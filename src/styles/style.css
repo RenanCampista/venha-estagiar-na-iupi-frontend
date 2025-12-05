@@ -82,6 +82,35 @@ body {
     opacity: 0.8;
 }
 
+/* Controles (filtro e ordenação) */
+.controls {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.control-group {
+    flex: 1;
+}
+
+.control-group label {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-weight: bold;
+    font-size: 0.875rem;
+}
+
+.control-group input,
+.control-group select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--input-border);
+    border-radius: 4px;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+}
+
+
 .header h1 {
     font-size: 1.5rem;
 }
