@@ -5,13 +5,27 @@
     --header-bg: #2c3e50;
     --header-text: #fff;
     --card-bg: #fff;
-    --border-color: #ddd;
     --income-color: #27ae60;
     --expense-color: #e74c3c;
     --btn-bg: #3498db;
     --btn-hover: #2980b9;
     --input-bg: #fff;
     --input-border: #ccc;
+}
+
+[data-theme="dark"] {
+    /* Variáveis de cores para tema escuro */
+    --bg-color: #1a1a1a;
+    --text-color: #e0e0e0;
+    --header-bg: #0d1117;
+    --header-text: #e0e0e0;
+    --card-bg: #2d2d2d;
+    --income-color: #2ecc71;
+    --expense-color: #e74c3c;
+    --btn-bg: #3498db;
+    --btn-hover: #2980b9;
+    --input-bg: #2d2d2d;
+    --input-border: #555;
 }
 
 /* Reset e estilos globais */

@@ -5,7 +5,6 @@ import { mockData } from '../data/transactions.js';
 // ---
 let transactions = [];
 let nextId = 1;
-let currentTheme = 'light';
 
 // ---
 // SELETORES DO DOM (Constantes - Padrão UPPER_SNAKE_CASE)
@@ -239,7 +238,7 @@ function saveToLocalStorage() {
 function loadFromLocalStorage() {
     const savedTransactions = localStorage.getItem('transactions');
     const savedNextId = localStorage.getItem('nextId');
-    const savedTheme = localStorage.getItem('theme'); // TODO
+    const savedTheme = localStorage.getItem('theme');
     
     if (savedTransactions) {
         transactions = JSON.parse(savedTransactions);
@@ -258,10 +257,25 @@ function loadFromLocalStorage() {
     }
 }
 
+/**
+ * Alterna o tema entre light e dark.
+ */
+function toggleTheme() {
+    const currentTheme  = document.body.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    
+    document.body.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+}
 
 // ---
 // MANIPULADORES DE EVENTOS
 // ---
+
+/**
+ * Lida com o clique no botão de trocar o tema (Light/Dark).
+ */
+THEME_SWITCHER.addEventListener('click', toggleTheme);
 
 /**
  * Lida com o envio do formulário de transação.
