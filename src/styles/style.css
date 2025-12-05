@@ -36,6 +36,50 @@ body {
     align-items: center;
 }
 
+.theme-btn {
+    background-color: var(--btn-bg);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.theme-btn:hover {
+    background-color: var(--btn-hover);
+}
+
+.submit-btn {
+    width: 100%;
+    background-color: var(--btn-bg);
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: var(--btn-hover);
+}
+
+.delete-btn {
+    background-color: var(--expense-color);
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.875rem;
+}
+
+.delete-btn:hover {
+    opacity: 0.8;
+}
+
 .header h1 {
     font-size: 1.5rem;
 }
