@@ -86,7 +86,7 @@ function filterTransactions(searchText) {
     if (!searchText) return transactions;
     
     return transactions.filter(transaction => 
-        transaction.description.toLowerCase().includes(searchText.toLowerCase())
+        transaction.description.toLowerCase().includes(searchText.toLowerCase()) // case insensitive
     );
 }
 
@@ -290,13 +290,21 @@ TRANSACTION_LIST.addEventListener('click', (event) => {
     if (event.target.classList.contains('delete-btn')) {
         var conf = confirm("Tem certeza que deseja excluir esta transação?");
         if (!conf) return;
-        
+
         const id = parseInt(event.target.getAttribute('data-id'));
         deleteTransaction(id);
     }
 });
 
+/**
+ * Lida com a digitação no campo de busca.
+ */
+SEARCH_INPUT.addEventListener('input', renderTransactions);
 
+/**
+ * Lida com a mudança no select de ordenação.
+ */
+SORT_SELECT.addEventListener('change', renderTransactions);
 
 /**
  * Lida com o clique no botão de trocar o tema (Light/Dark).
